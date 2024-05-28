@@ -28,25 +28,34 @@ class Player
 end
 
 player_1 = Player.new("finn", 60)
-puts player_1
-player_1.boost
-puts player_1
+number_rolled = rand(1..6)
 
-player_2 = Player.new("lucy", 90)
-puts player_2
-player_2.drain
-puts player_2
+case number_rolled
+when 1..2
+    player_1.drain
+    puts "#{player_1.name} got drained 😩"
+when 3..4
+    puts "#{player_1.name} got skipped"
+else
+    player_1.boost
+    puts "#{player_1.name} got boosted 😁"
+end
 
-player_3 = Player.new("jase")
-puts player_3
-player_3.boost
-player_3.boost
-puts player_3
+# player_2 = Player.new("lucy", 90)
+# puts player_2
+# player_2.drain
+# puts player_2
 
-player_4 = Player.new("alex", 125)
-puts player_4.name
-player_4.name = "alexander"
-puts player_4.name
-puts player_4.health
-puts player_4.score
-puts player_4
+# player_3 = Player.new("jase")
+# puts player_3
+# player_3.boost
+# player_3.boost
+# puts player_3
+
+# player_4 = Player.new("alex", 125)
+# puts player_4.name
+# player_4.name = "alexander"
+# puts player_4.name
+# puts player_4.health
+# puts player_4.score
+# puts player_4
