@@ -1,8 +1,11 @@
-Snack = Data.define(:name, :price)
+snacks_eaten = Hash.new(0)
 
-snacks = [
-    Snack.new("popcorn", 3)
-    Snack.new("candy", 1)
-    Snack.new("nachos", 4)
-    Snack.new("pretzels", 2)
-]
+snacks_eaten["popcorn"] = 3
+
+snacks_eaten["candy"] = 1
+
+snacks_eaten["popcorn"] += 3
+
+snacks_eaten["nachos"] += 4
+
+puts snacks_eaten
