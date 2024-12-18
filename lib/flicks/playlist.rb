@@ -1,5 +1,14 @@
 class Playlist
 
+    Snack = Data.define(:name, :price)
+
+    SNACKS = [
+        Snack.new("popcorn", 3),
+        Snack.new("candy", 1),
+        Snack.new("nachos", 4),
+        Snack.new("pretzels", 2),
+    ]
+
     attr_reader :name, :movies
 
     def initialize(name)
@@ -18,6 +27,11 @@ class Playlist
     def play(viewing = 3)
         puts "*" * 30
         puts "#{@name}'s playlist:"
+
+        puts "\nThe snackbar has:"
+        SNACKS.each do |snack|
+            puts "#{snack.name} for $#{snack.price}"
+        end
 
         puts "\nBefore Watching!"
         puts @movies
@@ -38,6 +52,9 @@ class Playlist
                     movie.thumbs_up
                     puts "#{movie.title} got a 👍"
                 end
+
+                snack = SNACKS.sample
+                puts "During #{movie.title}, #{@name} ate #{snack.name} for $#{snack.price}."
             end
         end
 
