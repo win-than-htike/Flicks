@@ -1,19 +1,22 @@
 require_relative "lib/flicks/movie"
 require_relative "lib/flicks/playlist"
 
-movie_1 = Movie.new("goonies", 10)
-movie_2 = Movie.new("ghostbusters", 9)
-movie_3 = Movie.new("goldfinger")
+# movie_1 = Movie.new("goonies", 10)
+# movie_2 = Movie.new("ghostbusters", 9)
+# movie_3 = Movie.new("goldfinger")
 
 playlist_1 = Playlist.new("Kermit")
-playlist_1.add_movie(movie_1)
-playlist_1.add_movie(movie_2)
-playlist_1.add_movie(movie_3)
+
+movies_file = File.join(__dir__, "movies.csv")
+
+playlist_1.load(ARGV.shift || movies_file)
 
 loop do
     print "\nHow many viewings? ('quit' to exit) "
 
     answer = gets.chomp.downcase
+    
+
     case answer
         when /^\d+$/
             playlist_1.play(answer.to_i)
@@ -25,7 +28,7 @@ loop do
     end
 end
 
-playlist_1.print_stats
+playlist_1.save
 
 # playlist_2 = Playlist.new("Fozzie")
 # playlist_2.add_movie(movie_3)
