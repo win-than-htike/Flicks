@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/flicks/playlist"
+
+playlist_1 = Flicks::Playlist.new("Kermit")
+
+movies_file = File.join(__dir__, "movies.csv")
+
+playlist_1.load(ARGV.shift || movies_file)
+
+loop do
+    print "\nHow many viewings? ('quit' to exit) "
+
+    answer = gets.chomp.downcase
+    
+
+    case answer
+        when /^\d+$/
+            playlist_1.play(answer.to_i)
+        when "quit", "exit"
+            playlist_1.print_stats
+            break
+        else
+            puts "Please enter a number or 'quit'"
+    end
+end
+
+playlist_1.save
+
+# playlist_2 = Playlist.new("Fozzie")
+# playlist_2.add_movie(movie_3)
+
+# movie_4 = Movie.new("gremlins", 7)
+# playlist_2.add_movie(movie_4)
+# playlist_2.play(3)
+# playlist_2.print_stats
+
+## Checking with if else
+# if number_rolled < 3
+#     movie_1.thumbs_down
+#     puts "#{movie_1.title} got a 👎"
+# elsif number_rolled < 5
+#     puts "#{movie_1.title} got skipped"
+# else
+#     movie_1.thumbs_up
+#     puts "#{movie_1.title} got a 👍"
+# end
+
+# puts movie_1
+# movie_1.thumbs_up
+# puts movie_1
+# movie_1.thumbs_up
+# puts movie_1
+
+# movie_2 = Movie.new("ghostbusters", 9)
+# puts movie_2
+# movie_2.thumbs_down
+# puts movie_2
+
+# movie_3 = Movie.new("holdfinger")
+# puts movie_3
+
+# puts 3.to_s
+# puts "hello".to_s
+# puts movie_1
